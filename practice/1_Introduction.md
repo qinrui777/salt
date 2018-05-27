@@ -1,5 +1,6 @@
 ### SALT是什么,有什么用？
-一个基础设施管理工具，类似于Puppet 、 Chef 、 Ansible ,两大主要功能：1 、远程执行命令 ；2 、配置管理（salt state system）
+* 一个基础设施管理工具，类似于Puppet 、 Chef 、 Ansible
+* 两大主要功能：1 、远程执行命令 ；2 、配置管理（salt state system）
 
 ### SALT特性有哪些？
 - 基于Python语言编写的
@@ -99,9 +100,8 @@ salt-cp 'test*' index.html /tmp/a.html
 * list 列表  
 `salt -L 'minion1,minion2' test.ping`
 * grains  
+`salt -G 'os:CentOS' test.ping`
 ```
-salt -G 'os:CentOS' test.ping
-
 #查看所有grains键/值
 salt 'test*' grains.items
 #查看所有grains项
@@ -109,5 +109,12 @@ salt 'test*' grains.ls
 查看某个grains的值
 salt 'test*' grains.item num_cpus
 ```
-
+* pillar
 * nodegroups 其实就是对Minion分组
+可以在master 端 /etc/salt/master 中设置
+
+* 子网 CDIR
+salt -S ‘115.29.249.3/24’ test.ping
+* 组个 Compound matchers -C
+salt -C ‘G@os:xxx -N@dbNode’ test.ping
+
