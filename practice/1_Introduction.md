@@ -27,10 +27,13 @@
 
 下载demo环境所需的Vagrantfile和其他文件
  `git clone https://github.com/UtahDave/salt-vagrant-demo.git`  
+ 
 进入下载的目录
  `cd salt-vagrant-demo`  
+ 
 利用该目录的Vagrantfile启动demo环境，这个过程需要下载一些东西，需要几分钟时间
  `vagrant up`  
+ 
 环境搭建好后，可在VirtualBox看到，集群有一个master、两个minion 
 > 该demo环境会自动做好安装、设置配置文件、认证等一下，可方便联系salt命令，如果是生产环境或者想要自行安装、配置等，可忽略
 
