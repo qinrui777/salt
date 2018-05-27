@@ -16,8 +16,8 @@ salt 中的两大数据系统，可类比为 两大兄弟，一个比较喜欢�
 `[root@node1 ~]# salt '*' grains.ls`
 ##### 显示某一个变量
 `[root@node1 ~]# salt '*' grains.item os`
-直接获取内容
-`[root@node1 ~]# salt '*' grains.get os`
+##### 直接获取内容
+`[root@node1 ~]# salt '*' grains.get os`  
 ##### 定义minion的grains
 可以写在/etc/salt/minion中格式如下
 ```
@@ -47,7 +47,7 @@ test: node2
 [root@node1 ~]# salt '*' saltutil.sync_grains 
 node2.minion:
 
-### Pillar
+### Pillar  
 可以指定一些信息到指定的minion上，不像grains一样是分发到所有Minion上的，它保存的数据可以是动态的,Pillar以sls来写的，格式是键值对
 
 适用情景：
@@ -56,12 +56,12 @@ node2.minion:
 - 3.动态的内容
 - 4.其他数据类型
 
-#####  编写pillar数据
+#####  编写pillar数据  
 
 1.指定pillar_roots，默认是/srv/pillar(可通过修改master配置文件修改),建立目录
 
 mkdir /srv/pillar
-cd /srv/pillar
+cd /srv/pillar  
 2.编辑一个pillar数据文件
 
 vim test1.sls
@@ -70,13 +70,13 @@ name: 'salt'
    hadoop: 1000
 redhat: 2000
 ubuntu: 2001
-3.建立top file指定minion到pillar数据文件
+3.建立top file指定minion到pillar数据文件  
 
  vim top.sls
  base:
    '*':
      - test1
-##### 刷新Pillar数据
+##### 刷新Pillar数据  
 `salt '*' saltutil.refresh_pillar`
 
 测试一下
@@ -85,7 +85,7 @@ salt '*' pillar.get name
 salt '*' pillar.item name
 ```
 
-##### 在state中通过jinja使用pillar数据
+##### 在state中通过jinja使用pillar数据  
 ```
 vim /srv/salt/user.sls
  {% for user, uid in pillar.get(’users’, {}).items() %}  ##pillar.get('users',{})可用pillar['users']代替，前者在没有得到值的情况下，赋默认值
