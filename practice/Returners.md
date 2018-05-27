@@ -5,15 +5,17 @@
 当然也支持自己定义的Return。
 
 查看对应minion上支持的returner类型
-`salt 'minion1' sys.list_returners`
-<img src="https://github.com/qinrui777/salt/blob/master/images/salt_returner_01.png" width="400">
+`salt 'minion1' sys.list_returners`  
+
+<img src="https://github.com/qinrui777/salt/blob/master/images/salt_returner_01.png" width="600">
 
 
 
 **master** 上 `salt 'minion1' cmd.run "echo hahahaha" --return syslog`
 
-**minion1** 上 `tailf /var/log/syslog`
-<img src="https://github.com/qinrui777/salt/blob/master/images/salt_return_syslog01.png" width="400">
+**minion1** 上 `tailf /var/log/syslog`  
+
+<img src="https://github.com/qinrui777/salt/blob/master/images/salt_return_syslog01.png" width="600">
 
 #### 配置returner
 minion 上的 /etc/salt/minion
