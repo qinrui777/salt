@@ -39,7 +39,16 @@
 
 <img src="https://github.com/qinrui777/salt/blob/master/images/salt_virtualbox.png" width="400">
 
+|      ip      |role  |
+|------------  |----- |
+|192.168.50.10|master |
+|192.168.50.11|minion1|
+|192.168.50.12|minion2|
+
 > 该demo环境会自动做好安装、设置配置文件、认证等一下，可方便联系salt命令，如果是生产环境或者想要自行安装、配置等，可忽略
 > ![image](https://github.com/qinrui777/salt/blob/master/images/salt_virtualbox.png =250x250)
 
 ###  常用命令
+
+登入master 所在虚拟机，登录minion 节点操作类似( vagrant ssh minion1 )  
+`vagrant ssh master`
