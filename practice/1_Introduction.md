@@ -25,13 +25,12 @@
 
 **前提：** 已经安装 **VirtualBox** 和 **Vagrant**
 
-下载demo环境所需的Vagrantfile和其他文件
+下载demo环境所需的Vagrantfile和其他文件  
  `git clone https://github.com/UtahDave/salt-vagrant-demo.git`  
  
-进入下载的目录
+进入下载的目录  
  `cd salt-vagrant-demo`  
- 
-利用该目录的Vagrantfile启动demo环境，这个过程需要下载一些东西，需要几分钟时间
+利用该目录的Vagrantfile启动demo环境，这个过程需要下载一些东西，需要几分钟时间  
  `vagrant up`  
  
 环境搭建好后，可在VirtualBox看到，集群有一个master、两个minion 
