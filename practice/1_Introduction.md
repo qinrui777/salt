@@ -34,12 +34,12 @@
  `vagrant up`  
  
 环境搭建好后，可在VirtualBox看到，集群有一个master、两个minion ，如下图：  
-![image](https://github.com/qinrui777/salt/blob/master/images/salt_virtualbox.png =250x250)
 
 
-<img src="https://github.com/qinrui777/salt/blob/master/images/salt_virtualbox.png" width="200">
+
+<img src="https://github.com/qinrui777/salt/blob/master/images/salt_virtualbox.png" width="400">
 
 > 该demo环境会自动做好安装、设置配置文件、认证等一下，可方便联系salt命令，如果是生产环境或者想要自行安装、配置等，可忽略
-
+> ![image](https://github.com/qinrui777/salt/blob/master/images/salt_virtualbox.png =250x250)
 
 ###  常用命令
