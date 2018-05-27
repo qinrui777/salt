@@ -58,7 +58,7 @@ sudo su
 
 ##### 命令格式 
 `salt [options] '<target>' <function> [arguments]`  
-`salt '*' test.ping  // 类似helloword`  
+`salt '*' test.ping     ##类似helloword`  
 
 #####  salt-key 密钥管理，通常在master端执行
  ```
@@ -79,3 +79,35 @@ salt-call [options] <function> [arguments]
 salt-call test.ping           ##自己执行test.ping命令
 salt-call cmd.run 'ifconfig'  ##自己执行cmd.run函数
 ```
+
+#####  salt-cp 分发文件到minion上
+不支持目录分发，通常在master运行.后面在讲远程执行也会类似命令 **cp.get_file**  cp 模块中有拷贝文件、目录的功能直接使用
+方法不一样，但殊途同归
+```
+salt-cp [options] '<target>' SOURCE DEST
+salt-cp '*' testfile.html /tmp
+salt-cp 'test*' index.html /tmp/a.html
+```
+
+
+##### target
+
+* globbing 默认   
+`salt 'test*' test.ping`
+* regular expression 正则表达式  
+`salt -E 'minion[1-2]' test.ping`
+* list 列表  
+`salt -L 'minion1,minion2' test.ping`
+* grains  
+```
+salt -G 'os:CentOS' test.ping
+
+#查看所有grains键/值
+salt 'test*' grains.items
+#查看所有grains项
+salt 'test*' grains.ls
+查看某个grains的值
+salt 'test*' grains.item num_cpus
+```
+
+* nodegroups 其实就是对Minion分组
