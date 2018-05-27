@@ -121,4 +121,4 @@ pkgs:
 ```
 
 ### 对比
-<img src="https://github.com/qinrui777/salt/blob/master/images/grains_pillar_compare.png" width="400">
+<img src="https://github.com/qinrui777/salt/blob/master/images/grains_pillar_compare.png" width="600">
