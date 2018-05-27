@@ -6,22 +6,17 @@
 
 查看对应minion上支持的returner类型
 `salt 'minion1' sys.list_returners`
+<img src="https://github.com/qinrui777/salt/blob/master/images/salt_returner_01.png" width="400">
 
-salt_returner_01.png
 
 
 **master** 上 `salt 'minion1' cmd.run "echo hahahaha" --return syslog`
 
 **minion1** 上 `tailf /var/log/syslog`
-
-salt_return_syslog01.png
-
-
+<img src="https://github.com/qinrui777/salt/blob/master/images/salt_return_syslog01.png" width="400">
 
 #### 配置returner
 minion 上的 /etc/salt/minion
-
-
 
 
 
