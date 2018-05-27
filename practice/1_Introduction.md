@@ -52,3 +52,30 @@
 
 登入master 所在虚拟机，登录minion 节点操作类似( vagrant ssh minion1 )  
 `vagrant ssh master`
+
+如果没有权限执行，可切换到 **root** 用户
+sudo su
+
+##### 命令格式 
+`salt [options] '<target>' <function> [arguments]`  
+`salt '*' test.ping  // 类似helloword`  
+
+#####  salt-key 密钥管理，通常在master端执行
+ ```
+salt-key [options]
+salt-key -L              ##查看所有minion-key的情况
+salt-key -a <key-name>   ##接受某个minion-key
+salt-key -d <key-name>   ##删除某个minion-key
+salt-key -A              ##接受所有的minion-key
+salt-key -D              ##删除所有的minion-key
+```
+
+#####  salt-call 该命令通常在minion上执行
+
+minion自己执行可执行模块，不是通过master下发job
+
+```
+salt-call [options] <function> [arguments]
+salt-call test.ping           ##自己执行test.ping命令
+salt-call cmd.run 'ifconfig'  ##自己执行cmd.run函数
+```
