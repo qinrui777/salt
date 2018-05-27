@@ -24,6 +24,13 @@ Executing job with jid 20180524130412535360
 
 `salt-run jobs.lookup_jid 20180524130359383439`
 
+salt runner中的job管理方法  
+```
+salt-run jobs.active                   #查看所有minion当前正在运行的jobs(在所有minions上运行saltutil.running)  
+salt-run jobs.lookup_jid<jid>
+```
+
+
 #####  方法二：salt util模块管理
 另一种管理job方式就是通过salt util模块管理  
 先执行一个长时间执行的命令   
@@ -38,17 +45,16 @@ Exiting gracefully on Ctrl-c
 
 ######  saltutil模块中的job管理方法
 
-saltutil.running #查看minion当前正在运行的jobs  
-saltutil.find_job<jid> #查看指定jid的job(minion正在运行的jobs)  
-saltutil.signal_job<jid> <single> #给指定的jid进程发送信号  
-saltutil.term_job <jid> #终止指定的jid进程(信号为15)  
-saltutil.kill_job <jid> #终止指定的jid进程(信号为9)  
-salt runner中的job管理方法  
-salt-run jobs.active#查看所有minion当前正在运行的jobs(在所有minions上运行saltutil.running)  
-salt-run jobs.lookup_jid<jid>
-
+```
+saltutil.running                            #查看minion当前正在运行的jobs  
+saltutil.find_job<jid>                      #查看指定jid的job(minion正在运行的jobs)  
+saltutil.signal_job<jid> <single>            #给指定的jid进程发送信号  
+saltutil.term_job <jid>                     #终止指定的jid进程(信号为15)  
+saltutil.kill_job <jid>                     #终止指定的jid进程(信号为9)  
+```
 结束正在执行的任务    
-salt 'minion1' cmd.run "ping www.baidu.com"     ##master上 
-找到该任务   salt-run jobs.active    
+`salt 'minion1' cmd.run "ping www.baidu.com"     ##master上 `
+找到该任务  
+`salt-run jobs.active   ` 
     
-salt 'minion1' saltutil.term_job 20180525125237055724   
+`salt 'minion1' saltutil.term_job 20180525125237055724 `
