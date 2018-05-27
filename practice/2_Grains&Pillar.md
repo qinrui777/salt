@@ -11,15 +11,18 @@ salt 中的两大数据系统，可类比为 两大兄弟，一个比较喜欢�
 
 
 ##### 查看minion的全部静态变量
-`[root@node1 ~]# salt '*' grains.items`
+`salt '*' grains.items`
 ##### 显示grains的变量名称
-`[root@node1 ~]# salt '*' grains.ls`
+` salt '*' grains.ls`
 ##### 显示某一个变量
-`[root@node1 ~]# salt '*' grains.item os`
+`salt '*' grains.item os`
 ##### 直接获取内容
-`[root@node1 ~]# salt '*' grains.get os`  
+`salt '*' grains.get os`  
 ##### 定义minion的grains
-可以写在/etc/salt/minion中格式如下
+
+> 一般在master 上执行，也可以在minion上 用salt-call 来查看,比如 `salt-call  grains.ls`
+
+可以写在/etc/salt/minion中格式如下,重启minion生效(systemctl restart salt-minion)
 ```
 grains:
  roles:
@@ -39,12 +42,12 @@ cabinet: 13
 cab_u: 14-15
 ```
 ##### 不重启minion端 刷新grains
-1.修改minion配置文件
-[root@node2 ~]# cat /etc/salt/grains 
-centos: node2
-test: node2
-2.master端刷新
-[root@node1 ~]# salt '*' saltutil.sync_grains 
+1.修改minion配置文件  
+cat /etc/salt/grains   
+centos: node2  
+test: node2  
+2.master端刷新  
+salt '*' saltutil.sync_grains   
 node2.minion:
 
 ### Pillar  
@@ -116,3 +119,6 @@ pkgs:
  vim: vim
  {% endif %}
 ```
+
+### 对比
+<img src="https://github.com/qinrui777/salt/blob/master/images/grains_pillar_compare.png" width="400">
