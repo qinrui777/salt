@@ -17,8 +17,10 @@ salt 中的两大数据系统，可类比为 两大兄弟，一个比较喜欢�
 ##### 显示某一个变量
 `salt '*' grains.item os`
 ##### 直接获取内容
-`salt '*' grains.get os`  
-##### 定义minion的grains
+`salt '*' grains.get os` 
+
+### 定义grains的三种方法
+##### 1 、定义minion的grains
 
 > 一般在master 上执行，也可以在minion上 用salt-call 来查看,比如 `salt-call  grains.ls`
 
@@ -41,14 +43,41 @@ deployment: datacenter4
 cabinet: 13
 cab_u: 14-15
 ```
-##### 不重启minion端 刷新grains
+##### 2、 不重启minion端 刷新grains
 1.修改minion配置文件  
 cat /etc/salt/grains   
 centos: node2  
 test: node2  
+
 2.master端刷新  
 salt '*' saltutil.sync_grains   
 node2.minion:
+
+
+##### 3、定义在master端
+
+* 在/srv/salt中建立_grains目录  
+`mkdir /srv/salt/_grains`
+
+* 编写grains文件，需要返回一个字典  
+```
+ vim test1.py
+ def hello():                      ##函数名字无所谓，应该是所有函数都会运行
+   agrain = {}
+   agrain['hello'] = 'saltstack'
+return agrain                   ##返回这个字典
+```
+
+* 同步到各个minion中去  
+```
+salt '*' saltutil.sync_grains
+salt '*' saltutil.sync_all
+salt '*' state.highstate
+```  
+
+* 验证
+`salt '*' grains.item hello`
+
 
 ### Pillar  
 可以指定一些信息到指定的minion上，不像grains一样是分发到所有Minion上的，它保存的数据可以是动态的,Pillar以sls来写的，格式是键值对
