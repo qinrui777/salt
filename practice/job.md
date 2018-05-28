@@ -16,7 +16,7 @@ minion端每次执行任务都会在
 
 ####  管理job
 #####  方法一：salt-run 命令  
-来管理job,这种方式其实是通过runner系统对job管理  
+来管理job,这种方式其实是通过runner系统对job管理, runner在 **master** 上执行
 
 `salt --async '*' test.ping `                  //查看执行jobid
 `salt -v '*' test.ping  `                      
