@@ -24,6 +24,7 @@ python eventlisten.py
 可以通过以下命令查看event事件，然后再打开一个终端执行任务
 `salt-run state.event pretty=True`
 
+<img src="https://github.com/qinrui777/salt/blob/master/images/salt_event_result01.jpg" width="600">
 
 ##### 方法三：
 
