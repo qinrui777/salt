@@ -43,6 +43,8 @@ for eachevent in event.iter_events(full=True):    //用迭代器一直查看事�
 
 - Master发给minion  
 `salt '*' event.fire "{'data': 'some message'}" "tag"`   
+`salt-call event.send /my/test/event '{"data": "my event test"}'`
+
 前面必须是字符串包住的字典，后面是tag,如果你的minion在监听event，你会看到这条event的
 
 - Minion发给minion  
