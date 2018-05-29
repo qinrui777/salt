@@ -57,8 +57,11 @@ salt -N STOCK state.sls  **saltenv='prod'**  nginx.stock
 state的执行时无序，那个无序是指执行我们写的那个sls是无序的，正是因为那个无序，salt保证每次执行的顺序是一样的，就加入了state order，在说它之前看看High Data(高级数据？)和Low Data(低级数据？)，高级数据我理解的就是我们编写sls文件的数据，低级数据就是经过render和parser编译过的数据。
 
 查看highdata
-`salt '*' state.show_highstate`
-查看lowdata
+
+`salt '*' state.show_highstate`  
+
+查看lowdata  
+
 `salt '*' state.show_lowstate`
 
 通过查看lowdata我们发现里面有一个字段order,因为salt默认会自动设置order，从10000开始。可以通过设置master配置文件参数state_auto_order: False来关闭
