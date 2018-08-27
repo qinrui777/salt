@@ -1,9 +1,9 @@
 salt 中的两大数据系统，可类比为 两大兄弟，一个比较喜欢一直住一套房子（grains），一个喜欢不停的换房子(pillar) 
 均可以用在salt的模块和其他组件中
 
-电影《一路有你》 主演： 古天乐黄奕莫文蔚
-男的（古）买房子就要住一辈子
-女的（莫）买房子是为了换大房子
+电影《一路有你》 主演： 古天乐、黄奕、莫文蔚 。
+- 男的（古）买房子就要住一辈子  
+- 女的（莫）买房子是为了换大房子  
 
 
 ### Grains 
@@ -112,13 +112,13 @@ ubuntu: 2001
 `salt '*' saltutil.refresh_pillar`
 
 测试一下
-```
+```sh
 salt '*' pillar.get name
 salt '*' pillar.item name
 ```
 
 ##### 在state中通过jinja使用pillar数据  
-```
+```sh
 vim /srv/salt/user.sls
  {% for user, uid in pillar.get(’users’, {}).items() %}  ##pillar.get('users',{})可用pillar['users']代替，前者在没有得到值的情况下，赋默认值
  {{user}}:
@@ -135,7 +135,7 @@ vim /srv/salt/user2.sls
 通过jinja模板配合grains指定pillar数据
 
 /srv/pillar/pkg.sls
-```
+```sh
 pkgs:
  {% if grains[’os_family’] == ’RedHat’ %}
  apache: httpd
@@ -149,5 +149,5 @@ pkgs:
  {% endif %}
 ```
 
-### 对比
+### 对比  
 <img src="https://github.com/qinrui777/salt/blob/master/images/grains_pillar_compare.png" width="600">
